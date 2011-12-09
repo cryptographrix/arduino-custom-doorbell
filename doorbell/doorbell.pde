@@ -3,6 +3,10 @@
 //                (the box inside the apartment) is on
 // lastButtonState = the last state the associated button was in
 // lastDebounceTime = the last time buttonPin has been in lastButtonState
+//
+// Bugs:
+//  - This will ring the bells twice: when someone presses and when they release
+//      I have to test a fix for this.
 
 long debounceDelay = 50;    // the debounce time; increase if the output flickers
 int heldDownMillis = 1000;    // How long between the "ding" and the "dong"
@@ -100,9 +104,11 @@ int DingDong (int bellsArrayMember) {
 }
 
 void ding (int pin) {
+  // Think of this function as "onButtonPress"
    digitalWrite(pin, HIGH);
 }
 
 void dong (int pin) {
+  // Think of this function as "onButtonRelease"
    digitalWrite(pin, LOW);
 }
