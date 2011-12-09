@@ -1,16 +1,14 @@
-// extension of debounce library for use as a doorbell system
-// 
 // buttonPin = the pin the appropriate doorbell button is on
 // doorbellPin = the pin the appropriate doorbell hardware
 //                (the box inside the apartment) is on
 // lastButtonState = the last state the associated button was in
 // lastDebounceTime = the last time buttonPin has been in lastButtonState
 
-// bells is a nested array of:
-// buttonPin doorbellPin lastButtonState lastDebounceTime dingDonged
-
+long debounceDelay = 50;    // the debounce time; increase if the output flickers
 int heldDownMillis = 1000;    // How long between the "ding" and the "dong"
 
+// bells is a nested array of:
+// buttonPin doorbellPin lastButtonState lastDebounceTime dingDonged
 int bells[4][5] = {
     { 3, 6, LOW, 0, 0 },  // 0 - First Floor
     { 4, 7, LOW, 0, 0 },  // 1 - Second Floor
@@ -22,9 +20,7 @@ int numBells = 3;  // number of doorbells.  NOT number of array members.
 //  This presumes that you are using a wildcard doorbell.
 //  This is also (currently) used as the last array member of bells[4][5]
 
-// the following variables are long's because the time, measured in miliseconds,
-// will quickly become a bigger number than can be stored in an int.
-long debounceDelay = 50;    // the debounce time; increase if the output flickers
+// --------- setup/loop ----------
 
 void setup() {
   int i;
@@ -63,6 +59,8 @@ void loop() {
   }
   
 }
+
+// -------- functions ----------
 
 void BellLoop (int k) {
   // BellLoop takes bells array member id
