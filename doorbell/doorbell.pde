@@ -46,7 +46,7 @@ void loop() {
       
       if ((bells[j][4] = 1) && (bells[j][2] == HIGH)) {
         // This will only occur when state has
-        // just changed and button still high
+        // just changed to high
         bells[j][4] = DingDong(j);
       }
   }
@@ -60,7 +60,7 @@ void loop() {
 
   if ((bells[numBells][4] = 1) && (bells[4][2] == HIGH)) {
     // This will only occur when state has
-    // just changed and button still high
+    // just changed to high
     for (int l=0; l<numBells; l++) {
       bells[3][4] = DingDong(l);
     }
