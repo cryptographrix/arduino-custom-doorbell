@@ -23,7 +23,7 @@ int bells[4][5] = {
 long debounceDelay = 50;    // the debounce time; increase if the output flickers
 
 void setup() {
-  int i, j;
+  int i;
 
   // Handles 0..2 inputs/outputs
   for (i=0; i<3; i++) {
