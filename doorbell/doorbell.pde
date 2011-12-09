@@ -18,6 +18,10 @@ int bells[4][5] = {
     { 9, 6, LOW, 0, 0 }  // 3 - Placeholder for "ring all"
 };
 
+int numBells = 3;  // number of doorbells.  NOT number of array members.
+//  This presumes that you are using a wildcard doorbell.
+//  This is also (currently) used as the last array member of bells[4][5]
+
 // the following variables are long's because the time, measured in miliseconds,
 // will quickly become a bigger number than can be stored in an int.
 long debounceDelay = 50;    // the debounce time; increase if the output flickers
@@ -26,34 +30,38 @@ void setup() {
   int i;
 
   // Handles 0..2 inputs/outputs
-  for (i=0; i<3; i++) {
+  for (i=0; i<numBells; i++) {
           pinMode(bells[i][0],INPUT);
           pinMode(bells[i][1],OUTPUT);
   }
   
   // handles "ring all" input pin
-  pinMode(bells[3][0],INPUT);
+  pinMode(bells[numBells][0],INPUT);
 }
 
 void loop() {
   // Handles first 3 doorbells
-  for (int j=0; j<3; j++) {
+  for (int j=0; j<numBells; j++) {
       BellLoop(j);
       
       if (bells[j][4] = 1) {
-        bells[j][4] = DingDong(bells[j][1]);
+        bells[j][4] = DingDong(j);
       }
   }
   
   // Handles the wildcard doorbell
-  int doorbells[3] = { 6,7,8 };
-  BellLoop(3);
+  // This is horrible because I use
+  // numBells to assume last array member.
+  // But this is great because of that.
+  // THANKS NICK!
+  BellLoop(numBells);
 
-  if (bells[3][4] = 1) {
-    for (int l=0; l<3; l++) {
-      bells[3][4] = DingDong(doorbells[l]);
+  if (bells[numBells][4] = 1) {
+    for (int l=0; l<numBells; l++) {
+      bells[3][4] = DingDong(l);
     }
   }
+  
 }
 
 void BellLoop (int k) {
@@ -84,10 +92,19 @@ void BellLoop (int k) {
   bells[k][2] = reading;
 }
 
-int DingDong (int pin) {
-      digitalWrite(pin, HIGH);
+int DingDong (int bellsArrayMember) {
+      int pin = bells[bellsArrayMember][1];
+      ding(pin);
       delay(heldDownMillis);
-      digitalWrite(pin, LOW);
+      dong(pin);
       
       return 0;
+}
+
+void ding (int pin) {
+   digitalWrite(pin, HIGH);
+}
+
+void dong (int pin) {
+   digitalWrite(pin, LOW);
 }
