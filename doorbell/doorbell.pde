@@ -12,8 +12,8 @@
 int heldDownMillis = 1000;    // How long between the "ding" and the "dong"
 
 int bells[4][5] = {
-    { 3, 6, LOW, 0, 0 },  // 0 - Chan's
-    { 4, 7, LOW, 0, 0 },  // 1 - Nick's
+    { 3, 6, LOW, 0, 0 },  // 0 - First Floor
+    { 4, 7, LOW, 0, 0 },  // 1 - Second Floor
     { 5, 8, LOW, 0, 0 },  // 2 - Basement
     { 9, 6, LOW, 0, 0 }  // 3 - Placeholder for "ring all"
 };
