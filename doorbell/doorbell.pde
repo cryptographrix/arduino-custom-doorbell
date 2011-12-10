@@ -5,6 +5,11 @@
 // lastDebounceTime = the last time buttonPin has been in lastButtonState
 //
 // Bugs:
+//  - This will need to be modified to work with a lighted bell.  Did I mention
+//      we accidentally got lighted bells?  That means a slight circuit change,
+//      as well as a logic change.
+//
+// Fixed:
 //  - This will ring the bells twice: when someone presses and when they release
 //      I have to test a fix for this.
 
