@@ -1,8 +1,9 @@
-// buttonPin = the pin the appropriate doorbell button is on
-// doorbellPin = the pin the appropriate doorbell hardware
+// buttonPin - int - the pin the appropriate doorbell button is on
+// doorbellPin - int - the pin the appropriate doorbell hardware
 //                (the box inside the apartment) is on
-// lastButtonState = the last state the associated button was in
-// lastDebounceTime = the last time buttonPin has been in lastButtonState
+// lastButtonState - LOW/HIGH - the last state the associated button was in
+// lastDebounceTime - long - the last time buttonPin has been in lastButtonState
+// dingDong - boolean - once outside of the loops, should we dingDong?
 //
 // Bugs:
 //  - This will need to be modified to work with a lighted bell.  Did I mention
@@ -17,7 +18,7 @@ long debounceDelay = 50;    // the debounce time; increase if the output flicker
 int heldDownMillis = 1000;    // How long between the "ding" and the "dong"
 
 // bells is a nested array of:
-// buttonPin doorbellPin lastButtonState lastDebounceTime dingDonged
+// buttonPin doorbellPin lastButtonState lastDebounceTime dingDong
 int bells[4][5] = {
     { 3, 6, LOW, 0, 0 },  // 0 - First Floor
     { 4, 7, LOW, 0, 0 },  // 1 - Second Floor
