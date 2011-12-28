@@ -4,6 +4,7 @@
 // lastButtonState - LOW/HIGH - the last state the associated button was in
 // lastDebounceTime - long - the last time buttonPin has been in lastButtonState
 // dingDong - boolean - once outside of the loops, should we dingDong?
+// lightPin - int - the pin that controls blinking of doorbell button lights
 //
 // Bugs:
 //  - This will need to be modified to work with a lighted bell.  Did I mention
